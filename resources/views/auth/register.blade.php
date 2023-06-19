@@ -1,5 +1,6 @@
 <x-guest-layout>
 
+<!-- background image -->
     <style>
         body{
             background-image: url('background_image1.jpg');

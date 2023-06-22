@@ -2,7 +2,13 @@
     <div class="mb-4 text-sm text-gray-600">
         {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
     </div>
-
+      <!-- Background Image -->
+      <style>
+        body{
+            background-image: url('bg_image1.jpg');
+            background-size: 100%;
+        }
+    </style>
     <form method="POST" action="{{ route('password.confirm') }}">
         @csrf
 

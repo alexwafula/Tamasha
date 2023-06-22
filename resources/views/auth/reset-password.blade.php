@@ -1,4 +1,12 @@
 <x-guest-layout>
+       <!-- Background Image -->
+       <style>
+        body{
+            background-image: url('bg_image1.jpg');
+            background-size: 100%;
+        }
+    </style>
+      
     <form method="POST" action="{{ route('password.store') }}">
         @csrf
 

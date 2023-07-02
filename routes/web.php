@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,12 +28,27 @@ Route::get('/admin', function () {
     return view('adminDashboard');
 })->middleware(['auth', 'verified'])->name('adminDashboard');
 
+Route::get('/admin/users', function () {
+    return view('users');
+})->middleware(['auth', 'verified'])->name('users');
 
+
+Route::get('/admin/eventss', function () {
+    return view('events');
+})->middleware(['auth', 'verified'])->name('events');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/users',[UserController::class, 'index'])->name('users.index');
+    Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
+    Route::post('/users/update/{id}', [UserController::class, 'update'])->name('users.update');
 });
 
+
+
+
+
 require __DIR__.'/auth.php';
+

@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        Session::put('status', $value);
         return view('home');
     }
 }

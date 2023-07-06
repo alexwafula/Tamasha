@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="../../../css/slicknav.min.css" type="text/css">
         <link rel="stylesheet" href="../../../css/style.css" type="text/css">
 
-    </head>
+</head>
     <body>
         <div class="min-h-screen bg-gray-100">
           @include('layouts.navigation')

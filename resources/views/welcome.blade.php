@@ -1,576 +1,1187 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-       <meta charset="utf-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-       <title>Tamasha</title>
+        <title>Tamasha | Event Web System</title>
 
-       <!-- Fonts -->
-       <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+       <!-- Google Font -->
+      <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
 
-       <!-- Styles -->
-       <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-
-         html{
-          line-height:1.15;
-          -webkit-text-size-adjust:100%
-         }
-
-         body{
-          margin:0;
-          padding: 0px
-         }
-
-         .nav ul{
-          list-style: none;
-         }
-
-         .nav ul li a{
-          text-decoration: none;
-         }
-
-         .nav{
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 20px 10%;
-          margin: auto;
-          position: fixed;
-          left: 0px;
-          top: 0px;
-          width: 100%;
-          z-index: 100;
-          background-color: black;
-          border: 1px solid black;
-         }
-
-         .menu{
-          display: flex;
-         }
-
-         .menu li a{
-          margin: 5px;
-          padding: 5px 20px;
-          color: white;
-          font-weight: 500;
-          opacity: 0.4;
-         }
-
-         .menu .active{
-          opacity: 1;
-         }
-
-         .menu li a:hover{
-          opacity: 1;
-          transition: all ease 0.3s;
-         }
-
-         .logo{
-          font-size: 2.1rem;
-          color: white;
-          text-transform: uppercase;
-         }
-
-         .right-elements{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-         }
-         .right-elements a{
-          margin: 0px 10px;
-         }
-         .right-elements a i{
-          color: white;
-         }
-         .right-elements a:hover i{
-          color: grey;
-          transition: all ease 0.2s;
-         }
-         #main{
-          background-color: white;
-          min-height: 100vh;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-top: 30px;
-         }
-         .main-content{
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          width: 80%;
-          margin: 50px auto;
-         }
-         .main-img{
-          height: 500px;
-          width: 500px;
-         }
-         .main-img img{
-          width: 100%;
-          height: 100%;
-          object-position: center;
-          object-fit: contain;
-          border-radius: 50px;
-         }
-         .main-text{
-          max-width: 500px;
-         }
-         .main-text span{
-          text-transform: uppercase;
-          font-weight: 600;
-          color: black;
-          letter-spacing: 2px;
-         }
-         .main-text h1{
-          font-size:2.2rem;
-          font-weight: 500;
-          line-height: 45px;
-         }
-
-         .main-text p{
-          color: black;
-          margin: 20px 0px;
-         }
-         .main-text a{
-          width: 180px;
-          height: 50px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          border: 1px solid black;
-          color: antiquewhite;
-          background-color: black;
-         }
-
-         .main-text a:hover{
-          cursor:pointer;
-          background: antiquewhite;
-          color: black;
-          transition: 0.3s;
-          border: none;
-         }
-         #categories{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin: 0px 0px 50px 0px white ;
-          flex-direction: row;
-          background-color: white;
-         }
-
-         #cate {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-weight: 500;
-          padding: 2px 20px;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          background-color: white;
-         }
-         .category-container{
-          display: flex;
-          flex-direction: row;
-          flex-flow: wrap;
-          margin: auto;
-          width: 1200px;
-          justify-content: space-around;
-          align-items:center;
-          overflow: hidden;
-          padding: 20px;
-          border: black;
-          background-color: white;
-         }
-         .category-box{
-          position: relative;
-          padding: 20px;
-         }
-         .category-box img{
-          width: 220px;
-          height: 220px;
-          object-fit: contain;
-          object-position: center;
-          padding: 20px;
-          background-color: white;
-          overflow: hidden;
-          border: white;
-          transition: all ease 0.3s;
-         }
-         .category-box span{
-          text-align: center;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-weight: 600;
-          color: black;
-          text-transform: uppercase;
-         }
-       .category-box:hover img{
-        transform: scale(1.02);
-        transition: all ease 0.2s;
-        box-shadow: 2px 2px 30px black;
-       }
-       .products{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0px 0px 0px 0px;
-        flex-direction:row;
-        background-color: white;
-       }
-       .prod-container{
-        display: flex;
-        flex-direction: row;
-        flex-flow: wrap;
-        margin: 0px;
-        width: 1200px;
-        justify-content: space-around;
-        align-items:center;
-        overflow: hidden;
-        padding: 20px;
-        border: black;
-        background-color: white;
-       }
-       #prod{
-        margin-top: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: 500;
-        padding: 0px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        background-color: white;
-       }
-       .category-box i{
-        color: white;
-       }
-       .affi{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0px 0px 50px 0px white ;
-        flex-direction: row;
-        background-color: white;  
-       }
-       .affi p{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 80%;
-        margin: 50px auto;
-        max-width: 500px;
-       }
-       .affiliates img{
-        width: 220px;
-        height: 220px;
-        object-fit: contain;
-        object-position: center;
-        padding: 20px;
-        background-color: white;
-        overflow: hidden;
-       }
-       footer{
-        background-color: darkgray;
-        padding: 60px 10px;
-        position: relative;
-        margin-top: 20px black;
-        border-top: 1px solid black;
-       }
-       .footer-container{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 85%;
-        margin: 10px auto;
-       }
-       .footer-logo-container{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-       }
-       .footer-logo{
-        width: 150px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 2rem;
-        color: black;
-        text-transform: uppercase;
-        font-weight: 700;
-        letter-spacing: 1px;
-       }
-       .footer-logo-container span{
-        color: black;
-        font-weight: 400;
-        margin: 10px;
-        font-size: 0.8rem;
-       }
-       .footer-social{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-       }
-       .footer-social a{
-        float: left;
-        margin: 0px 6px;
-        border-radius: 50%;
-        color: black;
-        background-color: black;
-        border: 1px solid black;
-        width: 30px;
-        height: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-       }
-       .footer-social a:hover{
-        background-color: black;
-        color: antiquewhite;
-        transition: all ease 0.2s;
-       }
-       .footer-menu{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-       }
-       .footer-menu-box{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin: 0px 30px;
-       }
-       .footer-menu-box strong{
-        color: black;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 5px;
-       }
-       .footer-menu-box ul li a,
-       .footer-menu-box ul li{
-        list-style: none;
-        color: grey;
-        font-size: 0.9rem;
-        margin: 5px 0px;
-       }
-       .footer-menu-box ul li a:hover{
-         color:black;
-         transition: all ease 0.3s;
-       }
-
-       a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--tw-bg-opacity: 1;background-color:rgb(255 255 255 / var(--tw-bg-opacity))}.bg-gray-100{--tw-bg-opacity: 1;background-color:rgb(243 244 246 / var(--tw-bg-opacity))}.border-gray-200{--tw-border-opacity: 1;border-color:rgb(229 231 235 / var(--tw-border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{--tw-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);--tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.text-center{text-align:center}.text-gray-200{--tw-text-opacity: 1;color:rgb(229 231 235 / var(--tw-text-opacity))}.text-gray-300{--tw-text-opacity: 1;color:rgb(209 213 219 / var(--tw-text-opacity))}.text-gray-400{--tw-text-opacity: 1;color:rgb(156 163 175 / var(--tw-text-opacity))}.text-gray-500{--tw-text-opacity: 1;color:rgb(107 114 128 / var(--tw-text-opacity))}.text-gray-600{--tw-text-opacity: 1;color:rgb(75 85 99 / var(--tw-text-opacity))}.text-gray-700{--tw-text-opacity: 1;color:rgb(55 65 81 / var(--tw-text-opacity))}.text-gray-900{--tw-text-opacity: 1;color:rgb(17 24 39 / var(--tw-text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--tw-bg-opacity: 1;background-color:rgb(31 41 55 / var(--tw-bg-opacity))}.dark\:bg-gray-900{--tw-bg-opacity: 1;background-color:rgb(17 24 39 / var(--tw-bg-opacity))}.dark\:border-gray-700{--tw-border-opacity: 1;border-color:rgb(55 65 81 / var(--tw-border-opacity))}.dark\:text-white{--tw-text-opacity: 1;color:rgb(255 255 255 / var(--tw-text-opacity))}.dark\:text-gray-400{--tw-text-opacity: 1;color:rgb(156 163 175 / var(--tw-text-opacity))}.dark\:text-gray-500{--tw-text-opacity: 1;color:rgb(107 114 128 / var(--tw-text-opacity))}}
-      </style>
-
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }   
-        </style>
+        
+        <!-- Css Styles -->
+        <link rel="stylesheet" href="imports/homepage/assets/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="imports/homepage/assets/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" href="imports/homepage/assets/css/elegant-icons.css" type="text/css">
+        <link rel="stylesheet" href="imports/homepage/assets/css/owl.carousel.min.css" type="text/css">
+        <link rel="stylesheet" href="imports/homepage/assets/css/magnific-popup.css" type="text/css">
+        <link rel="stylesheet" href="imports/homepage/assets/css/slicknav.min.css" type="text/css">
+        <link rel="stylesheet" href="imports/homepage/assets/css/style.css" type="text/css">
     </head>
-    <body class="antialiased">
-      <nav>
-        <div class="relative flex items-top justify-center min-h-screen bg-white-100 dark:bg-white-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Login</a>
+    <body>
+      <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+ 
+        <header class="header-section">
+            <div class="container">
+                <div class="logo">
+                    <a href="welcome.blade.php">
+                      <img src="img/logo.png" alt="">
+                    </a>
+                </div>
+
+                <div class="nav-menu">
+                 <nav class="mainmenu mobile-menu">
+                    <div class="relative flex items-top justify-center min-h-screen bg-white-100 dark:bg-white-900 sm:items-center py-4 sm:pt-0">
+                        @if (Route::has('login'))
+                        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                         @auth
+                            <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                        @else
+                            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Login</a>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                         @endif
+                        @endauth
+                        </div>
                         @endif
-                    @endauth
-                </div>
-            @endif
-        </div>
-
-        <a class="logo">Tamasha</a>
-
-        <ul class="menu">
-            <li><a href="#" class="active">Home</a></li>
-            <li><a href="#">Venue</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Media</a></li>
-            <li><a href="#">Contact Us</a></li>
-        </ul>
-
-        <div class="right-elements">
-            <a href="#" class="search">
-                <i class="fas fa-search"></i>
-            </a>
-
-        </div>
-      </nav>
-
-      <section id="main">
-
-        <div class="main-content">
-            <div class="main-text">
-
-                <span>YOUR EVENTS, YOUR WAY</span>
-                <h1> Enjoy Diverse Events in Nairobi</h1>
-                <p></p>
-                <a href="#">Click here to order</a>
-
-            </div>
-
-            <div class="main-img">
-                <img src="background_image1.jpg"
-                    alt="Main image">
-            </div>
-
-        </div>
-
-    </section>
-
-    <h2 id="prod">About us:</h2>
-
-    <section class="affi">
-        <div class="main-img">
-               <img src="test/upload/video_thumbnail.jpg" alt="Video Thumbnail" align="centre">
-        </div>
-        <p>We are passionate about bringing people together and creating memorable experiences through our platform. Whether you're planning a corporate conference, a music festival, a charity fundraiser, or any other type of event, we've got you covered.</p>
-
-    </section>
-
-    <h2 id="cate">Browse by Category</h2>
-
-    <section id="categories">
-        <div class="category-container">
-            <a href="products.php" class="category-box">
-                <img src="avatar.png"
-                    alt="business and seminars">
-                <span>Business and Seminars</span>
-            </a>
-        </div>
-
-        <div class="category-container">
-            <a href="#" class="category-box">
-                <img src="avatar.png"
-                    alt="music and concerts">
-                <span>Music and Concerts</span>
-            </a>
-        </div>
-
-        
-
-        <div class="category-container">
-            <a href="#" class="category-box">
-                <img src="avatar.png"
-                    alt="sports and fitness">
-                <span>Sports and Fitness</span>
-            </a>
-        </div>
-    </section>
-
-    <h2 id="prod">Popular Events</h2>
-
-    <section class="products 1">
-
-        <div class="prod-container">
-            <a href="#" class="category-box">
-                <img
-                    src="avatar.png">
-                <span>LOCATION: WESTLANDS</span>
-                <i class="fas fa-shopping-cart"></i>
-            </a>
-        </div>
-
-        <div class="prod-container">
-            <a href="#" class="category-box">
-                <img
-                    src="avatar.png">
-                <span>LOCATION: KASARANI</span>
-                <i class="fas fa-shopping-cart"></i>
-            </a>
-        </div>
-
-        <div class="prod-container">
-            <a href="#" class="category-box">
-                <img
-                    src="avatar.png">
-                <span>LOCATION: KAREN</span>
-                <i class="fas fa-shopping-cart"></i>
-            </a>
-        </div>
-    </section>
-
-    <section class="products 1">
-
-        <div class="prod-container">
-            <a href="#" class="category-box">
-                <img
-                    src="avatar.png">
-                <span>LOCATION:</span>
-                <i class="fas fa-shopping-cart"></i>
-
-            </a>
-        </div>
-
-        <div class="prod-container">
-            <a href="#" class="category-box">
-                <img
-                    src="avatar.png">
-                <span>LOCATION</span>
-                <i class="fas fa-shopping-cart"></i>
-            </a>
-        </div>
-
-        <div class="prod-container">
-            <a href="#" class="category-box">
-                <img
-                    src="avatar.png">
-                <span>LOCATION</span>
-                <i class="fas fa-shopping-cart"></i></i>
-            </a>
-        </div>
-
-    </section>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-logo">Tamasha
-            </div>
-
-            <span>&copy Copyright 2022. All rights reserved.</span>
-
-            <div class="footer-social">
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-
-        <div>
-            <div class="footer-menu">
-                <div class="footer-menu-box">
-                    <strong>Products</strong>
+                    </div>
+                    
                     <ul>
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact Us</a></li>  
+                        <li class="active"><a href="welcome.blade.php">Home</a></li>
+                        <li><a href="#">Categories</a>
+                            <ul class="dropdown">
+                                <li><a href="#">Business and Seminars</a></li>
+                                <li><a href="#">Music and Concerts</a></li>
+                                <li><a href="#">Sports and Fitness</a></li>
+                                <li><a href="#">Food and Drinks</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Schedule</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact Us</a></li>
                     </ul>
+                 </nav>
+                 <a href="#" class="primary-btn top-btn"><i class="fa fa-ticket"></i> Ticket</a>
+                </div>
+             <div id="mobile-menu-wrap"></div>
+            </div>
+        </header
+
+    <!-- Hero Section Begin -->
+    <section class="hero-section set-bg" data-setbg="img/hero.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="hero-text">
+                        <span>5 to 9 August 2023, mardavall hotel, Westalands</span>
+                        <h2>Change Your Mind<br /> To Become Sucess</h2>
+                        <a href="#" class="primary-btn">Buy Ticket</a>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
+    <!-- Hero Section End -->
 
-        <div>
-            <div class="footer-menu">
-                <div class="footer-menu-box">
-                    <strong>Products</strong>
-                    <ul>
-                        <li><a href="#">Newsletter</a></li>
-                        <li><a href="#">Subscribe to Get Latest media updates</a></li>                     
-                    </ul>
+    <!-- Counter Section Begin -->
+    <section class="counter-section bg-gradient">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="counter-text">
+                        <span>Conference Date</span>
+                        <h3>Count Every Second <br />Until the Event</h3>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="cd-timer" id="countdown">
+                        <div class="cd-item">
+                            <span>40</span>
+                            <p>Days</p>
+                        </div>
+                        <div class="cd-item">
+                            <span>18</span>
+                            <p>Hours</p>
+                        </div>
+                        <div class="cd-item">
+                            <span>46</span>
+                            <p>Minutes</p>
+                        </div>
+                        <div class="cd-item">
+                            <span>32</span>
+                            <p>Seconds</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Counter Section End -->
+
+    <!-- Home About Section Begin -->
+    <section class="home-about-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="ha-pic">
+                        <img src="img/h-about.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ha-text">
+                        <h2>About Conference</h2>
+                        <p>When I first got into the online advertising business, I was looking for the magical
+                            combination that would put my website into the top search engine rankings, catapult me to
+                            the forefront of the minds or individuals looking to buy my product, and generally make me
+                            rich beyond my wildest dreams! After succeeding in the business for this long, I’m able to
+                            look back on my old self with this kind of thinking and shake my head.</p>
+                        <ul>
+                            <li><span class="icon_check"></span> Write On Your Business Card</li>
+                            <li><span class="icon_check"></span> Advertising Outdoors</li>
+                            <li><span class="icon_check"></span> Effective Advertising Pointers</li>
+                            <li><span class="icon_check"></span> Kook 2 Directory Add Url Free</li>
+                        </ul>
+                        <a href="#" class="ha-btn">Discover Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Home About Section End -->
+
+    <!-- Team Member Section Begin -->
+    <section class="team-member-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Who’s speaking</h2>
+                        <p>These are our communicators, you can see each person information</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="member-item set-bg" data-setbg="img/team-member/member-1.jpg">
+            <div class="mi-social">
+                <div class="mi-social-inner bg-gradient">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="mi-text">
+                <h5>Emma Sandoval</h5>
+                <span>Speaker</span>
+            </div>
+        </div>
+        <div class="member-item set-bg" data-setbg="img/team-member/member-2.jpg">
+            <div class="mi-social">
+                <div class="mi-social-inner bg-gradient">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="mi-text">
+                <h5>Emma Sandoval</h5>
+                <span>Speaker</span>
+            </div>
+        </div>
+        <div class="member-item set-bg" data-setbg="img/team-member/member-3.jpg">
+            <div class="mi-social">
+                <div class="mi-social-inner bg-gradient">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="mi-text">
+                <h5>Emma Sandoval</h5>
+                <span>Speaker</span>
+            </div>
+        </div>
+        <div class="member-item set-bg" data-setbg="img/team-member/member-4.jpg">
+            <div class="mi-social">
+                <div class="mi-social-inner bg-gradient">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="mi-text">
+                <h5>Emma Sandoval</h5>
+                <span>Speaker</span>
+            </div>
+        </div>
+        <div class="member-item set-bg" data-setbg="img/team-member/member-5.jpg">
+            <div class="mi-social">
+                <div class="mi-social-inner bg-gradient">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="mi-text">
+                <h5>Emma Sandoval</h5>
+                <span>Speaker</span>
+            </div>
+        </div>
+        <div class="member-item set-bg" data-setbg="img/team-member/member-6.jpg">
+            <div class="mi-social">
+                <div class="mi-social-inner bg-gradient">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="mi-text">
+                <h5>Emma Sandoval</h5>
+                <span>Speaker</span>
+            </div>
+        </div>
+        <div class="member-item set-bg" data-setbg="img/team-member/member-7.jpg">
+            <div class="mi-social">
+                <div class="mi-social-inner bg-gradient">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="mi-text">
+                <h5>Emma Sandoval</h5>
+                <span>Speaker</span>
+            </div>
+        </div>
+        <div class="member-item set-bg" data-setbg="img/team-member/member-8.jpg">
+            <div class="mi-social">
+                <div class="mi-social-inner bg-gradient">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="mi-text">
+                <h5>Emma Sandoval</h5>
+                <span>Speaker</span>
+            </div>
+        </div>
+        <div class="member-item set-bg" data-setbg="img/team-member/member-9.jpg">
+            <div class="mi-social">
+                <div class="mi-social-inner bg-gradient">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="mi-text">
+                <h5>Emma Sandoval</h5>
+                <span>Speaker</span>
+            </div>
+        </div>
+        <div class="member-item set-bg" data-setbg="img/team-member/member-10.jpg">
+            <div class="mi-social">
+                <div class="mi-social-inner bg-gradient">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="mi-text">
+                <h5>Emma Sandoval</h5>
+                <span>Speaker</span>
+            </div>
+        </div>
+    </section>
+    <!-- Team Member Section End -->
+
+    <!-- Schedule Section Begin -->
+    <section class="schedule-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Our Schedule</h2>
+                        <p>Do not miss anything topic about the event</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="schedule-tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
+                                    <h5>Day 1</h5>
+                                    <p>May 04, 2019</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
+                                    <h5>Day 2</h5>
+                                    <p>May 05, 2019</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
+                                    <h5>Day 3</h5>
+                                    <p>May 06, 2019</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
+                                    <h5>Day 4</h5>
+                                    <p>May 07, 2019</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-5" role="tab">
+                                    <h5>Day 5</h5>
+                                    <p>May 08, 2019</p>
+                                </a>
+                            </li>
+                        </ul><!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-1.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>Dealing with Difficult People</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-2.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>V7 Digital Photo Printing</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-3.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>Beyond The Naked Eye</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-4.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>Influencing The Influencer</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-1.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>Dealing with Easy People</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-2.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>V7 Digital Photo Printing</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-3.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>Beyond The Naked Eye</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-4.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>Influencing The Influencer</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-3" role="tabpanel">
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-1.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>Dealing with Intermediate People</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-2.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>V7 Digital Photo Printing</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-3.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>Beyond The Naked Eye</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-4.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>Influencing The Influencer</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-4" role="tabpanel">
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-1.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>Dealing with Expert People</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-2.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>V7 Digital Photo Printing</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-3.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>Beyond The Naked Eye</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-4.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>Influencing The Influencer</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-5" role="tabpanel">
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-1.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>Dealing with Too Difficult People</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-2.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>V7 Digital Photo Printing</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-3.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>Beyond The Naked Eye</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="sc-pic">
+                                                    <img src="img/schedule/schedule-4.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="sc-text">
+                                                    <h4>Influencing The Influencer</h4>
+                                                    <ul>
+                                                        <li><i class="fa fa-user"></i> John Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <ul class="sc-widget">
+                                                    <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
+                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Schedule Section End -->
+
+    <!-- Pricing Section Begin -->
+    <section class="pricing-section set-bg spad" data-setbg="img/pricing-bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Ticket Pricing</h2>
+                        <p>Get your event ticket plan</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-8">
+                    <div class="price-item">
+                        <h4>1 Day Pass</h4>
+                        <div class="pi-price">
+                            <h2><span>$</span>129</h2>
+                        </div>
+                        <ul>
+                            <li>One Day Conference Ticket</li>
+                            <li>Coffee-break</li>
+                            <li>Lunch and Networking</li>
+                            <li>Keynote talk</li>
+                            <li>Talk to the Editors Session</li>
+                        </ul>
+                        <a href="#" class="price-btn">Get Ticket <span class="arrow_right"></span></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-8">
+                    <div class="price-item top-rated">
+                        <div class="tr-tag">
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <h4>Full Pass</h4>
+                        <div class="pi-price">
+                            <h2><span>$</span>199</h2>
+                        </div>
+                        <ul>
+                            <li>One Day Conference Ticket</li>
+                            <li>Coffee-break</li>
+                            <li>Lunch and Networking</li>
+                            <li>Keynote talk</li>
+                            <li>Talk to the Editors Session</li>
+                            <li>Lunch and Networking</li>
+                            <li>Keynote talk</li>
+                        </ul>
+                        <a href="#" class="price-btn">Get Ticket <span class="arrow_right"></span></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-8">
+                    <div class="price-item">
+                        <h4>Group Pass</h4>
+                        <div class="pi-price">
+                            <h2><span>$</span>79</h2>
+                        </div>
+                        <ul>
+                            <li>One Day Conference Ticket</li>
+                            <li>Coffee-break</li>
+                            <li>Lunch and Networking</li>
+                            <li>Keynote talk</li>
+                            <li>Talk to the Editors Session</li>
+                        </ul>
+                        <a href="#" class="price-btn">Get Ticket <span class="arrow_right"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Pricing Section End -->
+
+    <!-- latest BLog Section Begin -->
+    <section class="latest-blog spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Latest News</h2>
+                        <p>Do not miss anything topic abput the event</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="latest-item set-bg large-item" data-setbg="img/blog/latest-b/latest-1.jpg">
+                        <div class="li-tag">Marketing</div>
+                        <div class="li-text">
+                            <h4><a href="./blog-details.html">Improve You Business Cards And Enchan Your Sales</a></h4>
+                            <span><i class="fa fa-clock-o"></i> 19th May, 2019</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="latest-item set-bg" data-setbg="img/blog/latest-b/latest-2.jpg">
+                        <div class="li-tag">Experience</div>
+                        <div class="li-text">
+                            <h5><a href="./blog-details.html">All users on MySpace will know that there are millions of people out there.</a></h5>
+                            <span><i class="fa fa-clock-o"></i> 19th May, 2019</span>
+                        </div>
+                    </div>
+                    <div class="latest-item set-bg" data-setbg="img/blog/latest-b/latest-3.jpg">
+                        <div class="li-tag">Marketing</div>
+                        <div class="li-text">
+                            <h5><a href="./blog-details.html">A Pocket PC is a handheld computer, which features many of the same capabilities.</a></h5>
+                            <span><i class="fa fa-clock-o"></i> 19th May, 2019</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- latest BLog Section End -->
+
+    <!-- Newslatter Section Begin -->
+    <section class="newslatter-section">
+        <div class="container">
+            <div class="newslatter-inner set-bg" data-setbg="img/newslatter-bg.jpg">
+                <div class="ni-text">
+                    <h3>Subscribe Newsletter</h3>
+                    <p>Subscribe to our newsletter and don’t miss anything</p>
+                </div>
+                <form action="#" class="ni-form">
+                    <input type="text" placeholder="Your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Newslatter Section End -->
+
+    <!-- Contact Section Begin -->
+    <section class="contact-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-title">
+                        <h2>Location</h2>
+                        <p>Get directions to our event center</p>
+                    </div>
+                    <div class="cs-text">
+                        <div class="ct-address">
+                            <span>Address:</span>
+                            <p>01 Pascale Springs Apt. 339, NY City <br />United State</p>
+                        </div>
+                        <ul>
+                            <li>
+                                <span>Phone:</span>
+                                (+12)-345-67-8910
+                            </li>
+                            <li>
+                                <span>Email:</span>
+                                info.colorlib@gmail.com
+                            </li>
+                        </ul>
+                        <div class="ct-links">
+                            <span>Website:</span>
+                            <p>https://conference.colorlib.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="cs-map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52901.38789495531!2d-118.19465514866786!3d34.03523211493029!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2cf71ad83ff9f%3A0x518b28657f4543b7!2sEast%20Los%20Angeles%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1579763856144!5m2!1sen!2sbd"
+                            height="400" style="border:0;" allowfullscreen=""></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="partner-logo owl-carousel">
+                <a href="#" class="pl-table">
+                    <div class="pl-tablecell">
+                        <img src="img/partner-logo/logo-1.png" alt="">
+                    </div>
+                </a>
+                <a href="#" class="pl-table">
+                    <div class="pl-tablecell">
+                        <img src="img/partner-logo/logo-2.png" alt="">
+                    </div>
+                </a>
+                <a href="#" class="pl-table">
+                    <div class="pl-tablecell">
+                        <img src="img/partner-logo/logo-3.png" alt="">
+                    </div>
+                </a>
+                <a href="#" class="pl-table">
+                    <div class="pl-tablecell">
+                        <img src="img/partner-logo/logo-4.png" alt="">
+                    </div>
+                </a>
+                <a href="#" class="pl-table">
+                    <div class="pl-tablecell">
+                        <img src="img/partner-logo/logo-5.png" alt="">
+                    </div>
+                </a>
+                <a href="#" class="pl-table">
+                    <div class="pl-tablecell">
+                        <img src="img/partner-logo/logo-6.png" alt="">
+                    </div>
+                </a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-text">
+                        <div class="ft-logo">
+                            <a href="#" class="footer-logo"><img src="img/logo.png" alt=""></a>
+                        </div>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Speakers</a></li>
+                            <li><a href="#">Schedule</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                        <div class="copyright-text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
+                        <div class="ft-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
-    </body>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="imports/homepage/assets/vendor/js/jquery-3.3.1.min.js"></script>
+    <script src="imports/homepage/assets/vendor/js/bootstrap.min.js"></script>
+    <script src="imports/homepage/assets/vendor/js/jquery.magnific-popup.min.js"></script>
+    <script src="imports/homepage/assets/vendor/js/jquery.countdown.min.js"></script>
+    <script src="imports/homepage/assets/vendor/js/jquery.slicknav.js"></script>
+    <script src="imports/homepage/assets/vendor/js/owl.carousel.min.js"></script>
+    <script src="imports/homepage/assets/vendor/js/main.js"></script>
+   </body>
 </html>

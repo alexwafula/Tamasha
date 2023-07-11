@@ -1,46 +1,4 @@
-<x-app-layout>
-
-<style>
-    .table-container {
-        margin: 0 auto;
-        max-width: 400px; /* Adjust the max-width as needed */
-    }
-    
-    .table {
-        border-collapse: collapse;
-        width: 100%;
-        border: 1px solid #ddd;
-        padding: 10px;
-        border-radius: 5px;
-        margin-top: 20px; /* Adjust the margin-top as needed */
-        margin-left: 20px; /* Adjust the margin-left as needed */
-    }
-    
-    .table th,
-    .table td {
-        border: 1px solid #ddd;
-        padding: 12px;
-        line-height: 1.4;
-        text-align: left;
-    }
-    
-    .table th {
-        background-color: #f5f5f5;
-    }
-    
-    .table tbody tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-    
-    .table tbody tr:hover {
-        background-color: #f0f0f0;
-    }
-    
-    .table-scroll {
-        max-height: 400px; 
-        overflow: auto;
-    }
-</style>
+<x-admin-layout>
 
 <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
    <span class="sr-only">Open sidebar</span>
@@ -53,13 +11,13 @@
    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 flex-1">
       <ul class="space-y-2 font-medium">
          <li>
-            <a href="{{Route('dashboard')}}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            <a href="{{Route('adminDashboard')}}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                <svg aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
                <span class="ml-3">Dashboard</span>
             </a>
          </li>
          <li>
-            <a href="{{Route('users')}}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            <a href="{{Route('users.index')}}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
                <span class="flex-1 ml-3 whitespace-nowrap">Users</span>
             </a>
@@ -86,47 +44,5 @@
    </div>
 </aside>
 
-<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <div class="table-container">
-        <table class="table">
-            <tr>
-                <td>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-header" style="background-color: #f0f0f0; padding: 10px; border-bottom: 1px solid #ddd;">
-                                        Edit User
-                                    </div>
-                                    <div class="card-body" style="padding: 20px;">
-                                        @if(session('success'))
-                                            <div class="alert alert-success" role="alert">
-                                                {{ session('success') }}
-                                            </div>
-                                        @endif
-                                        <form action="{{ route('users.update', $user->id) }}" method="POST">
-                                            @csrf
-                                            <div class="mb-6">
-    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray">Name</label>
-    <input type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" value="{{ $user->name }}">
-                                            <div class="mb-6">
-    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray">Email</label>
-    <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" value="{{ $user->email }}"></div>
-                                            <div style="text-align: center;">
-                                            <button type="submit" class="text-gray bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 btn btn-primary">Update</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>
 
-
-</x-app-layout>
-
+</x-admin-layout>

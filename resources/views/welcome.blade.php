@@ -31,6 +31,11 @@
  
         <header class="header-section">
             <div class="container">
+<<<<<<< HEAD
+=======
+                
+
+>>>>>>> 474b6db1247494607b84482b5c3da26676411fb0
                 <div class="nav-menu">
                  <nav class="mainmenu mobile-menu">
                     <div class="relative flex items-top justify-center min-h-screen bg-white-100 dark:bg-white-900 sm:items-center py-4 sm:pt-0">
@@ -1141,10 +1146,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="footer-text">
-                        <div class="ft-logo">
-                            <a href="#" class="footer-logo"><img src="img/logo.png" alt=""></a>
-                        </div>
+                   
                         <ul>
                             <li><a href="#">Home</a></li>
                             <li><a href="#">Speakers</a></li>

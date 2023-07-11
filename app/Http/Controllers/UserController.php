@@ -11,7 +11,8 @@ class UserController extends Controller
     {
         $search = $request->input('search');
 
-        $users = User::when($search, function ($query) use ($search) {
+        $users = User::when($search, function ($query) use ($search) 
+        {
             $query->where('name', 'LIKE', "%$search%")
                 ->orWhere('email', 'LIKE', "%$search%");
         })->paginate(10);
@@ -23,6 +24,14 @@ class UserController extends Controller
     {
         $user = User::find($id);
         return view('users.edit', compact('user'));
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+    
+        
+        return redirect()->route('users.index')->with('success', 'User deleted successfully');
     }
 
     public function update(Request $request, $id)

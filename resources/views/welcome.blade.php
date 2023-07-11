@@ -31,11 +31,7 @@
  
         <header class="header-section">
             <div class="container">
-                <div class="logo">
-                    <a href="welcome.blade.php">
-                      <img src="img/logo.png" alt="">
-                    </a>
-                </div>
+                
 
                 <div class="nav-menu">
                  <nav class="mainmenu mobile-menu">
@@ -1147,10 +1143,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="footer-text">
-                        <div class="ft-logo">
-                            <a href="#" class="footer-logo"><img src="img/logo.png" alt=""></a>
-                        </div>
+                   
                         <ul>
                             <li><a href="#">Home</a></li>
                             <li><a href="#">Speakers</a></li>

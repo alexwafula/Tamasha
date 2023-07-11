@@ -3,12 +3,17 @@
 <style>
     .table-container {
         margin: 0 auto;
-        max-width: 600px; 
+        max-width: 400px; /* Adjust the max-width as needed */
     }
     
     .table {
         border-collapse: collapse;
         width: 100%;
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 20px; /* Adjust the margin-top as needed */
+        margin-left: 20px; /* Adjust the margin-left as needed */
     }
     
     .table th,
@@ -36,9 +41,6 @@
         overflow: auto;
     }
 </style>
-
-
-
 
 <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
    <span class="sr-only">Open sidebar</span>
@@ -84,54 +86,47 @@
    </div>
 </aside>
 
-
-
-
-
 <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <table style="border-collapse: collapse; width: 400px; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
-        <tr>
-            <td>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header" style="background-color: #f0f0f0; padding: 10px; border-bottom: 1px solid #ddd;">
-                                    Edit User
-                                </div>
-                                <div class="card-body" style="padding: 20px;">
-                                    @if(session('success'))
-                                        <div class="alert alert-success" role="alert">
-                                            {{ session('success') }}
-                                        </div>
-                                    @endif
-                                    <form action="{{ route('users.update', $user->id) }}" method="POST">
-                                        @csrf
-                                        <div class="form-group">
-                                            <label for="name">Name</label>
-                                            <input type="text" name="name" id="name" class="form-control" value="{{ $user->name }}" style="margin-bottom: 10px;">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="email" name="email" id="email" class="form-control" value="{{ $user->email }}" style="margin-bottom: 10px;">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="password">Password</label>
-                                            <input type="password" name="password" id="password" class="form-control" value="{{ $user->password }}" style="margin-bottom: 10px;">
-                                        </div>
-                                        <div style="text-align: center;">
-                                            <button type="submit" class="btn btn-primary">Update</button>
-                                        </div>
-                                    </form>
+    <div class="table-container">
+        <table class="table">
+            <tr>
+                <td>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header" style="background-color: #f0f0f0; padding: 10px; border-bottom: 1px solid #ddd;">
+                                        Edit User
+                                    </div>
+                                    <div class="card-body" style="padding: 20px;">
+                                        @if(session('success'))
+                                            <div class="alert alert-success" role="alert">
+                                                {{ session('success') }}
+                                            </div>
+                                        @endif
+                                        <form action="{{ route('users.update', $user->id) }}" method="POST">
+                                            @csrf
+                                            <div class="mb-6">
+    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray">Name</label>
+    <input type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" value="{{ $user->name }}">
+                                            <div class="mb-6">
+    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray">Email</label>
+    <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" value="{{ $user->email }}"></div>
+                                            <div style="text-align: center;">
+                                            <button type="submit" class="text-gray bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 btn btn-primary">Update</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </td>
-        </tr>
-    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 
 </x-app-layout>
+

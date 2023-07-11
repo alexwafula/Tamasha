@@ -1,65 +1,96 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Tamasha
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+An Event Web Based System that Promotes Local Businesses and Creatives in Nairobi.
 
-## About Laravel
+## Table of Contents
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+[General Information] (#general info)
+[Installation] (#installation)
+[Technologies] (#technologies)
+[Features] (#features)
+[Licenses] (#licenses)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## General Information
 
-## Learning Laravel
+This project is a web-based event promotion system that aims to promote various events in Nairobi. It functions as a centralised platform through which users can easily discover and explore a diverse range of exciting events such as concerts, conferences, and cultural gatherings. The web-based system focuses on providing detailed event information as well as a booking platform that connects event organisers and attendees. It covers a wide range of topics, including music, art, sports, technology, and more. 
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Installation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Prerequisites:
 
-## Laravel Sponsors
+Make sure you have Git installed on your system. You can download it from the official website (https://git-scm.com/).
+Ensure you have PHP and Composer installed on your system. Laravel requires PHP and Composer to be present.
+Set up a web server (e.g., Apache or Nginx) with PHP enabled.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Clone the repository:
 
-### Premium Partners
+Open your terminal or command prompt.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Navigate to the directory where you want to clone the Laravel project.
 
-## Contributing
+Run the following command to clone the repository:
+git clone <https://github.com/alexwafula/Tamasha.git>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Install dependencies:
 
-## Code of Conduct
+Navigate into the cloned project directory:
+cd <C:\xampp\htdocs\Tamasha\Tamasha>
+Run the following command to install the required dependencies using Composer:
+composer install
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Configuration:
 
-## Security Vulnerabilities
+Rename the .env.example file to .env:
+cp .env.example .env
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Generate the application key:
+php artisan key:generate
+
+This command will generate a unique application key used for encryption and other security features.
+
+### Database configuration:
+
+Open the .env file and provide the necessary database credentials (database name, username, password, etc.):
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=tamasha
+DB_USERNAME=root
+DB_PASSWORD=
+
+### Migrate and seed the database (optional):
+php artisan migrate --seed
+
+### Serve the application:
+
+You can use Laravel's built-in development server to run the application locally. Run the following command:
+
+If the project includes database migrations and seeders, you can run the following command to create the necessary database tables and seed the initial data:
+php artisan serve
+
+By default, the application will be served at http://localhost:8000.
+
+
+## Technologies
+
+Laravel is a well-known PHP framework that is known for its elegant syntax, robust features, and scalability. With efficient routing, database integration, and powerful ORM (Object-Relational Mapping), it provides a solid foundation for building web applications.
+
+PHP: PHP is a popular server-side programming language used in web development. Dynamic content generation, database connectivity, and seamless integration with HTML and other web technologies are all possible.
+MySQL or another RDBMS (relational database management system): RDBMS is used to store event data, user information, ticket information, and other pertinent data.
+
+HTML/CSS: HTML and CSS are used to structure and style the frontend user interface of a website.
+
+JavaScript: JavaScript adds dynamic features such as event filtering, search functionality, and AJAX-based interactions to provide interactivity and enhance the user experience.
+
+Bootstrap or another frontend framework: A frontend framework helps in creating responsive and visually appealing designs with pre-built components and styles.
+
+
+## Features
+
+User Registration and Authentication: Allow users to register, sign in, and manage their profiles. This allows for personalised interactions, ticket purchases, and event bookmarking.
+
 
 ## License
 

@@ -42,7 +42,44 @@
          </li>
       </ul>
    </div>
-</aside>
 
+   <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 flex-1">
+      <form method="POST" action="{{ route('events.store') }}" enctype="multipart/form-data">
+         @csrf
+
+         <div>
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title" required>
+         </div>
+
+         <div>
+            <label for="image">Image:</label>
+            <input type="file" name="image" id="image" required>
+         </div>
+
+         <div>
+            <label for="description">Description:</label>
+            <textarea name="description" id="description" rows="4"></textarea>
+         </div>
+
+         <div>
+            <label for="start_time">Start Time:</label>
+            <input type="datetime-local" name="start_time" id="start_time" required>
+         </div>
+
+         <div>
+            <label for="venue">Venue:</label>
+            <input type="text" name="venue" id="venue" required>
+         </div>
+
+         <div>
+            <label for="status">Status:</label>
+            <input type="checkbox" name="status" id="status" value="1">
+         </div>
+
+         <button type="submit">Submit</button>
+      </form>
+   </div>
+</aside>
 
 </x-admin-layout>

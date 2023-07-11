@@ -21,7 +21,6 @@ return new class extends Migration
             $table->datetime('start_time');
             $table->text('venue');
             $table->boolean('status')->default(0);
-            $table->index(['deleted_at']);
             $table->timestamps();
         });
     }

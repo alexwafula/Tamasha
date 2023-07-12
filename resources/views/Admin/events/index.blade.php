@@ -56,7 +56,7 @@
 
 
 <div class="h-full px-3 py-4 bg-gray-50 flex justify-center items-center">
-      <form method="POST" action="{{ route('Admin.events.events') }}" enctype="multipart/form-data" class="bg-white p-6 rounded-md shadow-md">
+      <form method="POST" action="{{ route('Admin.events.store') }}" enctype="multipart/form-data" class="bg-white p-6 rounded-md shadow-md">
          @csrf
 
          <div class="mb-4">

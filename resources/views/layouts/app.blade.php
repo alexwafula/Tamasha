@@ -16,14 +16,15 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+      
         <!-- Css Styles -->
-        <link rel="stylesheet" href="../../../css/bootstrap.min.css" type="text/css">
-        <link rel="stylesheet" href="../../../css/font-awesome.min.css" type="text/css">
-        <link rel="stylesheet" href="../../../css/elegant-icons.css" type="text/css">
-        <link rel="stylesheet" href="../../../css/owl.carousel.min.css" type="text/css">
-        <link rel="stylesheet" href="../../../css/magnific-popup.css" type="text/css">
-        <link rel="stylesheet" href="../../../css/slicknav.min.css" type="text/css">
-        <link rel="stylesheet" href="../../../css/style.css" type="text/css">
+        <link rel="stylesheet" href="imports/homepage/assets/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="imports/homepage/assets/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" href="imports/homepage/assets/css/elegant-icons.css" type="text/css">
+        <link rel="stylesheet" href="imports/homepage/assets/css/owl.carousel.min.css" type="text/css">
+        <link rel="stylesheet" href="imports/homepage/assets/css/magnific-popup.css" type="text/css">
+        <link rel="stylesheet" href="imports/homepage/assets/css/slicknav.min.css" type="text/css">
+         <link rel="stylesheet" href="imports/homepage/assets/css/style.css" type="text/css">
 
 </head>
     <body>
@@ -31,11 +32,7 @@
           @include('layouts.navigation')
           <header class="header-section">
             <div class="container">
-                <div class="logo">
-                    <a href="welcome.blade.php">
-                      <img src="img/logo.png" alt="">
-                    </a>
-                </div>
+                
 
                 <div class="nav-menu">
                  <nav class="mainmenu mobile-menu">
@@ -55,23 +52,8 @@
                         @endif
                     </div>
                     
-                    <ul>
-                        <li class="active"><a href="welcome.blade.php">Home</a></li>
-                        <li><a href="#">Categories</a>
-                            <ul class="dropdown">
-                                <li><a href="#">Business and Seminars</a></li>
-                                <li><a href="#">Music and Concerts</a></li>
-                                <li><a href="#">Sports and Fitness</a></li>
-                                <li><a href="#">Food and Drinks</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Schedule</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                 </nav>
-                 <a href="#" class="primary-btn top-btn"><i class="fa fa-ticket"></i> Ticket</a>
+                   
+                
                 </div>
              <div id="mobile-menu-wrap"></div>
             </div>
@@ -85,12 +67,13 @@
         </div>
 
         <!-- Js Plugins -->
-        <script src="../../../js/jquery-3.3.1.min.js"></script>
-        <script src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/jquery.magnific-popup.min.js"></script>
-        <script src="../../../js/jquery.countdown.min.js"></script>
-        <script src="../../../js/jquery.slicknav.js"></script>
-        <script src="../../../js/owl.carousel.min.js"></script>
-        <script src="../../../js/main.js"></script>
+    <!-- Js Plugins -->
+    <script src="imports/homepage/assets/vendor/js/jquery-3.3.1.min.js"></script>
+    <script src="imports/homepage/assets/vendor/js/bootstrap.min.js"></script>
+    <script src="imports/homepage/assets/vendor/js/jquery.magnific-popup.min.js"></script>
+    <script src="imports/homepage/assets/vendor/js/jquery.countdown.min.js"></script>
+    <script src="imports/homepage/assets/vendor/js/jquery.slicknav.js"></script>
+    <script src="imports/homepage/assets/vendor/js/owl.carousel.min.js"></script>
+    <script src="imports/homepage/assets/vendor/js/main.js"></script>
     </body>
 </html>

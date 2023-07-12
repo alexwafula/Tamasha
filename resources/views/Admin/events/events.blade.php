@@ -1,39 +1,82 @@
 <x-admin-layout>
+   <style>
+      .heading {
+         color: blue;
+         font-weight: bold;
+      }
+
+      .styled-button {
+         border: 1px solid;
+         border-radius: 20px;
+         padding: 5px 10px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+      }
+
+      .green-button {
+         background-color: green;
+         color: white;
+      }
+
+      .red-button {
+         background-color: red;
+         color: white;
+      }
+
+      .blue-button {
+         background-color: blue;
+         color: white;
+      }
+
+      table {
+         border-collapse: collapse;
+         width: 100%;
+      }
+
+      th, td {
+         padding: 8px;
+         text-align: left;
+         border-bottom: 1px solid black;
+      }
+   </style>
 
    <div class="h-full px-3 py-4 bg-gray-50">
-      <div class="flex justify-between items-center mb-4">
-         <h2 class="text-2xl font-bold">Events</h2>
-         <a href="{{ route('Admin.events.create') }}" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Add Event</a>
+      <div class="flex justify-center items-center mb-4 border-b border-gray-300 pb-2">
+         <h2 class="text-2xl font-bold heading">Event Details</h2>
       </div>
 
-      <table class="w-full bg-white border border-gray-300">
+      <table class="w-full bg-white">
          <thead>
             <tr>
-               <th class="px-6 py-4 border-b">Title</th>
-               <th class="px-6 py-4 border-b">Image</th>
-               <th class="px-6 py-4 border-b">Description</th>
-               <th class="px-6 py-4 border-b">Start Time</th>
-               <th class="px-6 py-4 border-b">Venue</th>
-               <th class="px-6 py-4 border-b">Status</th>
-               <th class="px-6 py-4 border-b">Actions</th>
+               <th class="px-6 py-4">#</th>
+               <th class="px-6 py-4">Title</th>
+               <th class="px-6 py-4">Image</th>
+               <th class="px-6 py-4">Description</th>
+               <th class="px-6 py-4">Start Time</th>
+               <th class="px-6 py-4">Venue</th>
+               <th class="px-6 py-4">Status</th>
+               <th class="px-6 py-4">Actions</th>
             </tr>
          </thead>
          <tbody>
-            @foreach ($events as $event)
+            @foreach ($events as $index => $event)
             <tr>
-               <td class="px-6 py-4 border-b">{{ $event->title }}</td>
-               <td class="px-6 py-4 border-b">{{ $event->image }}</td>
-               <td class="px-6 py-4 border-b">{{ $event->description }}</td>
-               <td class="px-6 py-4 border-b">{{ $event->start_time }}</td>
-               <td class="px-6 py-4 border-b">{{ $event->venue }}</td>
-               <td class="px-6 py-4 border-b">{{ $event->status }}</td>
-               <td class="px-6 py-4 border-b">
-                  <a href="{{ route('Admin.events.edit', $event->id) }}" class="text-blue-500 hover:underline">Edit</a>
+               <td class="px-6 py-4">{{ $index + 1 }}</td>
+               <td class="px-6 py-4 text-center">{{ $event->title }}</td>
+               <td><img src="{{ asset('public/events'.$event->image) }}" alt="Event Image"></td>
+               <td class="px-6 py-4">{{ $event->description }}</td>
+               <td class="px-6 py-4">{{ $event->start_time }}</td>
+               <td class="px-6 py-4">{{ $event->venue }}</td>
+               <td class="px-6 py-4">{{ $event->status }}</td>
+               <td class="px-6 py-4">
+                  <a href="{{ route('Admin.events.edit', $event->id) }}" class="styled-button green-button">Edit</a>
                   <form action="{{ route('Admin.events.destroy', $event->id) }}" method="POST" class="inline">
                      @csrf
                      @method('DELETE')
-                     <button type="submit" class="text-red-500 hover:underline">Delete</button>
+                     <button type="submit" class="styled-button red-button">Delete</button>
                   </form>
+                  <a href="{{ route('dashboard', $event->id) }}" class="styled-button blue-button">Display Event</a>
                </td>
             </tr>
             @endforeach

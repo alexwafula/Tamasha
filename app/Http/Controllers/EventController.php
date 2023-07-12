@@ -1,38 +1,76 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreEventRequest;
-use App\Models\Event;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Redirect;
+use App\Models\Event;
 
 class EventController extends Controller
 {
+
+
     public function index()
     {
         $events = Event::all();
 
-        return view('events.index', compact('events'));
+        return view('admin.events.index', compact('events'));
     }
 
-    public function store(StoreEventRequest $request)
+    public function create()
     {
-        $validatedData = $request->validated();
+        return view('admin.events.create');
+    }
 
-        $imagePath = $request->file('image')->store('public/images');
+    public function store(Request $request)
+    {
+        // Validate the input from the form
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'image' => 'required',
+            'description' => 'required',
+            'start_time' => 'required',
+            'venue' => 'required',
+            'status' => 'required',
+        ]);
 
-        $event = new Event();
-        $event->title = $validatedData['title'];
-        $event->image = Storage::url($imagePath);
-        $event->description = $validatedData['description'];
-        $event->start_time = $validatedData['start_time'];
-        $event->venue = $validatedData['venue'];
-        $event->status = $request->has('status') ? 1 : 0;
-        $event->save();
+        // Create a new event with the validated data
+        Event::create($validatedData);
 
-        // Optionally, you can redirect the user to a success page
-        return redirect()->route('events.store')->with('success', 'Event created successfully');
+        return redirect()->route('Admin.events.index')->with('success', 'Event added successfully.');
+    }
+
+    public function edit($id)
+    {
+        $event = Event::findOrFail($id);
+
+        return view('admin.events.edit', compact('event'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validate the input from the form
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'image' => 'required',
+            'description' => 'required',
+            'start_time' => 'required',
+            'venue' => 'required',
+            'status' => 'required',
+        ]);
+
+        // Find the event by ID and update its data
+        $event = Event::findOrFail($id);
+        $event->update($validatedData);
+
+        return redirect()->route('Admin.events.index')->with('success', 'Event updated successfully.');
+    }
+
+    public function destroy($id)
+    {
+        // Find the event by ID and delete it
+        $event = Event::findOrFail($id);
+        $event->delete();
+
+        return redirect()->route('Admin.events.index')->with('success', 'Event deleted successfully.');
     }
 }

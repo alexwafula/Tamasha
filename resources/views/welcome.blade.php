@@ -31,11 +31,6 @@
  
         <header class="header-section">
             <div class="container">
-<<<<<<< HEAD
-=======
-                
-
->>>>>>> 474b6db1247494607b84482b5c3da26676411fb0
                 <div class="nav-menu">
                  <nav class="mainmenu mobile-menu">
                     <div class="relative flex items-top justify-center min-h-screen bg-white-100 dark:bg-white-900 sm:items-center py-4 sm:pt-0">

@@ -17,13 +17,13 @@ class UserController extends Controller
                 ->orWhere('email', 'LIKE', "%$search%");
         })->paginate(10);
 
-        return view('users.index', compact('users', 'search'));
+        return view('Admin.users.index', compact('users', 'search'));
     }
 
     public function edit($id)
     {
         $user = User::find($id);
-        return view('users.edit', compact('user'));
+        return view('Admin.users.edit', compact('user'));
     }
 
     public function destroy(User $user)
@@ -31,7 +31,7 @@ class UserController extends Controller
         $user->delete();
     
         
-        return redirect()->route('users.index')->with('success', 'User deleted successfully');
+        return redirect()->route('Admin.users.index')->with('success', 'User deleted successfully');
     }
 
     public function update(Request $request, $id)
@@ -42,7 +42,7 @@ class UserController extends Controller
         $user->password = $request->input('password');
         $user->save();
 
-        return redirect()->route('users.index')->with('success', 'User details updated successfully.');
+        return redirect()->route('Admin.users.index')->with('success', 'User details updated successfully.');
     }
 }
 

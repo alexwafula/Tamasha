@@ -17,15 +17,21 @@
             </a>
          </li>
          <li>
-            <a href="{{Route('users.index')}}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            <a href="{{Route('Admin.users.index')}}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
                <span class="flex-1 ml-3 whitespace-nowrap">Users</span>
             </a>
          </li>
          <li>
-            <a href="{{Route('events')}}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            <a href="{{Route('Admin.events.index')}}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
                <span class="flex-1 ml-3 whitespace-nowrap">Events</span>
+            </a>
+         </li>
+         <li>
+            <a href="{{Route('Admin.events.events')}}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+               <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
+               <span class="flex-1 ml-3 whitespace-nowrap">Event Details</span>
             </a>
          </li>
          <li>
@@ -45,4 +51,48 @@
 </aside>
 
 
+
+
+
+
+<div class="h-full px-3 py-4 bg-gray-50 flex justify-center items-center">
+      <form method="POST" action="{{ route('Admin.events.events') }}" enctype="multipart/form-data" class="bg-white p-6 rounded-md shadow-md">
+         @csrf
+
+         <div class="mb-4">
+            <label for="title" class="block">Title:</label>
+            <input type="text" name="title" id="title" required class="w-full p-2 border border-gray-300 rounded-md">
+         </div>
+
+         <div class="mb-4">
+            <label for="image" class="block">Image:</label>
+            <input type="file" name="image" id="image" required class="w-full p-2 border border-gray-300 rounded-md">
+         </div>
+
+         <div class="mb-4">
+            <label for="description" class="block">Description:</label>
+            <textarea name="description" id="description" rows="4" class="w-full p-2 border border-gray-300 rounded-md"></textarea>
+         </div>
+
+         <div class="mb-4">
+            <label for="start_time" class="block">Start Time:</label>
+            <input type="datetime-local" name="start_time" id="start_time" required class="w-full p-2 border border-gray-300 rounded-md">
+         </div>
+
+         <div class="mb-4">
+            <label for="venue" class="block">Venue:</label>
+            <input type="text" name="venue" id="venue" required class="w-full p-2 border border-gray-300 rounded-md">
+         </div>
+
+         <div class="mb-4">
+            <label for="status" class="block">Status:</label>
+            <input type="checkbox" name="status" id="status" value="1">
+         </div>
+
+         <div class="flex justify-center">
+            <button type="submit" class="px-4 py-2 bg-blue-500 text-black rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Add Event</button>
+         </div>
+      </form>
+   </div>
 </x-admin-layout>
+

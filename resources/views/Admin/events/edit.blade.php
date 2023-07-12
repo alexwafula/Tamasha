@@ -1,5 +1,4 @@
 <x-admin-layout>
-
 <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
    <span class="sr-only">Open sidebar</span>
    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -17,13 +16,13 @@
             </a>
          </li>
          <li>
-            <a href="{{Route('users.index')}}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            <a href="{{Route('Admin.users.index')}}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
                <span class="flex-1 ml-3 whitespace-nowrap">Users</span>
             </a>
          </li>
          <li>
-            <a href="{{Route('events')}}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            <a href="{{Route('Admin.events.index')}}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
                <span class="flex-1 ml-3 whitespace-nowrap">Events</span>
             </a>
@@ -42,44 +41,62 @@
          </li>
       </ul>
    </div>
-
-   <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 flex-1">
-      <form method="POST" action="{{ route('events.store') }}" enctype="multipart/form-data">
-         @csrf
-
-         <div>
-            <label for="title">Title:</label>
-            <input type="text" name="title" id="title" required>
-         </div>
-
-         <div>
-            <label for="image">Image:</label>
-            <input type="file" name="image" id="image" required>
-         </div>
-
-         <div>
-            <label for="description">Description:</label>
-            <textarea name="description" id="description" rows="4"></textarea>
-         </div>
-
-         <div>
-            <label for="start_time">Start Time:</label>
-            <input type="datetime-local" name="start_time" id="start_time" required>
-         </div>
-
-         <div>
-            <label for="venue">Venue:</label>
-            <input type="text" name="venue" id="venue" required>
-         </div>
-
-         <div>
-            <label for="status">Status:</label>
-            <input type="checkbox" name="status" id="status" value="1">
-         </div>
-
-         <button type="submit">Submit</button>
-      </form>
-   </div>
 </aside>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <div class="h-full px-3 py-4 bg-gray-50">
+      <h2 class="text-2xl font-bold mb-4">Edit Event</h2>
+
+      <form method="POST" action="{{ route('Admin.events.update', $event->id) }}" enctype="multipart/form-data" class="bg-white p-6 rounded-md shadow-md">
+         @csrf
+         @method('PUT')
+
+         <div class="mb-4">
+            <label for="title" class="block">Title:</label>
+            <input type="text" name="title" id="title" value="{{ $event->title }}" required class="w-full p-2 border border-gray-300 rounded-md">
+         </div>
+
+         <div class="mb-4">
+            <label for="image" class="block">Image:</label>
+            <input type="file" name="image" id="image" class="w-full p-2 border border-gray-300 rounded-md">
+         </div>
+
+         <div class="mb-4">
+            <label for="description" class="block">Description:</label>
+            <textarea name="description" id="description" rows="4" class="w-full p-2 border border-gray-300 rounded-md">{{ $event->description }}</textarea>
+         </div>
+
+         <div class="mb-4">
+            <label for="start_time" class="block">Start Time:</label>
+            <input type="datetime-local" name="start_time" id="start_time" value="{{ $event->start_time }}" required class="w-full p-2 border border-gray-300 rounded-md">
+         </div>
+
+         <div class="mb-4">
+            <label for="venue" class="block">Venue:</label>
+            <input type="text" name="venue" id="venue" value="{{ $event->venue }}" required class="w-full p-2 border border-gray-300 rounded-md">
+         </div>
+
+         <div class="mb-4">
+            <label for="status" class="block">Status:</label>
+            <input type="checkbox" name="status" id="status" value="1" {{ $event->status ? 'checked' : '' }}>
+         </div>
+
+         <div class="flex justify-center">
+            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Update</button>
+         </div>
+      </form>
+   </div>
 </x-admin-layout>

@@ -38,24 +38,21 @@ class EventController extends Controller
     public function store(Request $request)
     {
         // Validate the input from the form
-        $request->validate([
+        $data=$request->validate([
             'title' => 'required',
-            'image' => 'required',
+            // 'image' => 'required',
             'description' => 'required',
             'start_time' => 'required',
             'venue' => 'required',
             'status' => 'required',
         ]);
 
+        if($request->hasFile('image')) {
+            $data['image']=$request->file('image')->store ('Event','public');
+        }
+
         // Create a new event with the validated data
-        Event::create([
-            'title' => $request->title,
-            'image' => $request->image,
-            'description' => $request->description,
-            'start_time' => $request->start_time,
-            'venue' => $request->venue,
-            'status' => $request->status,
-        ]);
+        Event::create($data);
 
         return redirect()->route('Admin.events.events')->with('success', 'Event added successfully.');
     }
@@ -72,12 +69,17 @@ class EventController extends Controller
         // Validate the input from the form
         $validatedData = $request->validate([
             'title' => 'required',
-            'image' => 'required',
+           // 'image' => 'required',
             'description' => 'required',
             'start_time' => 'required',
             'venue' => 'required',
             'status' => 'required',
         ]);
+
+        
+        if($request->hasFile('image')) {
+            $data['image']=$request->file('image')->store ('Event','public');
+        }
 
         // Find the event by ID and update its data
         $event = Event::findOrFail($id);

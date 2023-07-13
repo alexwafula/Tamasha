@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/users',[UserController::class, 'index'])->name('Admin.users.index');
 Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('Admin.users.edit');
-Route::post('/users/update/{id}', [UserController::class, 'update'])->name('users.update');
+Route::post('/users/{id}/update', [UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
 });
@@ -65,7 +65,7 @@ Route::prefix('Admin')->name('Admin.')->group(function () {
     Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
     Route::post('/events/', [EventController::class, 'store'])->name('events.store');
     Route::get('/events/{id}/edit', [EventController::class, 'edit'])->name('events.edit');
-    Route::put('/events/{id}', [EventController::class, 'update'])->name('events.update');
+    Route::put('/events/{id}/update', [EventController::class, 'update'])->name('events.update');
     Route::delete('/events/{id}', [EventController::class, 'destroy'])->name('events.destroy');
 });
 

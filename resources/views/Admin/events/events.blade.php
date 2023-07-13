@@ -64,7 +64,7 @@
             <tr>
                <td class="px-6 py-4">{{ $index + 1 }}</td>
                <td class="px-6 py-4 text-center">{{ $event->title }}</td>
-               <td><img src="{{ asset('public/events'.$event->image) }}" alt="Event Image"></td>
+               <td><img src="{{ $event->image ? asset('storage/' .$event->image) : asset('images/no-image.jpg') }}" alt="Event Image" style="height: 250px;"/></td>
                <td class="px-6 py-4">{{ $event->description }}</td>
                <td class="px-6 py-4">{{ $event->start_time }}</td>
                <td class="px-6 py-4">{{ $event->venue }}</td>

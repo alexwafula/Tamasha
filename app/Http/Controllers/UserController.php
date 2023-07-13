@@ -11,8 +11,7 @@ class UserController extends Controller
     {
         $search = $request->input('search');
 
-        $users = User::when($search, function ($query) use ($search) 
-        {
+        $users = User::when($search, function ($query) use ($search) {
             $query->where('name', 'LIKE', "%$search%")
                 ->orWhere('email', 'LIKE', "%$search%");
         })->paginate(10);
@@ -29,20 +28,28 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-    
-        
+
         return redirect()->route('Admin.users.index')->with('success', 'User deleted successfully');
     }
 
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = $request->input('password');
+
+        // Validate the input from the form
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+        ]);
+
+        // Update the user properties
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+        $user->password = bcrypt($validatedData['password']); // Hash the password for security
+
         $user->save();
 
         return redirect()->route('Admin.users.index')->with('success', 'User details updated successfully.');
     }
 }
-

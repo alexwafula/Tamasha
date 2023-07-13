@@ -37,7 +37,7 @@
          @foreach ($events as $event)
             <div class="bg-white rounded-lg shadow-md p-4 event-box">
                <h3 class="text-lg font-semibold mb-2">{{ $event->title }}</h3>
-               <img src="{{ asset($event->image) }}" alt="{{ $event->title }}" class="w-full h-40 object-cover mb-2">
+              <td><img src="{{ $event->image ? asset('storage/' .$event->image) : asset('images/no-image.jpg') }}" alt="Event Image" style="height: 250px;"/></td>
                <p class="text-sm text-gray-500">{{ $event->description }}</p>
                <p class="text-sm text-gray-500 mb-2">{{ $event->start_time }}</p>
                <p class="text-sm text-gray-500">{{ $event->venue }}</p>

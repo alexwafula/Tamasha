@@ -4,7 +4,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\TicketController; 
 
 
 /*
@@ -70,7 +70,7 @@ Route::prefix('Admin')->name('Admin.')->group(function () {
 });
 
 
-
+Route::post('/purchase-tickets', [TicketController::class, 'purchaseTickets'])->name('purchase.tickets');
 
 require __DIR__.'/auth.php';
 

@@ -44,6 +44,7 @@ class EventController extends Controller
             'description' => 'required',
             'start_time' => 'required',
             'venue' => 'required',
+            'price' => 'nullable|numeric',
             'status' => 'required',
         ]);
 
@@ -64,6 +65,17 @@ class EventController extends Controller
         return view('admin.events.edit', compact('event'));
     }
 
+    
+
+    public function tickets()
+    {
+        $events = Event::all(); // Fetch events from the database
+
+        return view('tickets', compact('events'));
+    }
+
+
+
     public function update(Request $request, $id)
     {
         // Validate the input from the form
@@ -72,6 +84,7 @@ class EventController extends Controller
            // 'image' => 'required',
             'description' => 'required',
             'start_time' => 'required',
+            'price' => 'nullable|numeric',
             'venue' => 'required',
             'status' => 'required',
         ]);

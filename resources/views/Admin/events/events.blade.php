@@ -55,6 +55,7 @@
                <th class="px-6 py-4">Description</th>
                <th class="px-6 py-4">Start Time</th>
                <th class="px-6 py-4">Venue</th>
+               <th class="px-6 py-4">Price</th>
                <th class="px-6 py-4">Status</th>
                <th class="px-6 py-4">Actions</th>
             </tr>
@@ -68,6 +69,7 @@
                <td class="px-6 py-4">{{ $event->description }}</td>
                <td class="px-6 py-4">{{ $event->start_time }}</td>
                <td class="px-6 py-4">{{ $event->venue }}</td>
+               <td class="px-6 py-4">{{ $event->price }}</td>
                <td class="px-6 py-4">{{ $event->status }}</td>
                <td class="px-6 py-4">
                   <a href="{{ route('Admin.events.edit', $event->id) }}" class="styled-button green-button">Edit</a>

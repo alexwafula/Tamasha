@@ -69,7 +69,7 @@
                 </div>
              <div id="mobile-menu-wrap"></div>
             </div>
-        </header
+        </header>
 
     <!-- Hero Section Begin -->
     <section class="hero-section set-bg" data-setbg="img/hero.jpg">
@@ -133,12 +133,8 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="ha-text">
-                        <h2>About Conference</h2>
-                        <p>When I first got into the online advertising business, I was looking for the magical
-                            combination that would put my website into the top search engine rankings, catapult me to
-                            the forefront of the minds or individuals looking to buy my product, and generally make me
-                            rich beyond my wildest dreams! After succeeding in the business for this long, I’m able to
-                            look back on my old self with this kind of thinking and shake my head.</p>
+                        <h2>About Tamasha</h2>
+                        <p>A platform where businesses can promote their events, and creatives can showcase their work. Tamasha also features a blog with articles about the latest trends in Nairobi's events and creative scene. Tamasha offers a variety of features that make it an effective event promotion tool. Businesses can create a profile on the website, where they can upload information about their events, such as the date, time, location, and ticket prices. They can also create a blog post to promote their event, and add photos and videos to their profile. Creatives can also create a profile on Tamasha, where they can showcase their work. Tamasha is a valuable resource for businesses and creatives in Nairobi. It is a platform where they can connect with each other, promote their work, and find new opportunities.</p>
                         <ul>
                             <li><span class="icon_check"></span> Write On Your Business Card</li>
                             <li><span class="icon_check"></span> Advertising Outdoors</li>
@@ -175,7 +171,7 @@
                 </div>
             </div>
             <div class="mi-text">
-                <h5>Emma Sandoval</h5>
+                <h5>Emma</h5>
                 <span>Speaker</span>
             </div>
         </div>
@@ -189,7 +185,7 @@
                 </div>
             </div>
             <div class="mi-text">
-                <h5>Emma Sandoval</h5>
+                <h5>Sandoval</h5>
                 <span>Speaker</span>
             </div>
         </div>
@@ -203,7 +199,7 @@
                 </div>
             </div>
             <div class="mi-text">
-                <h5>Emma Sandoval</h5>
+                <h5>Mike</h5>
                 <span>Speaker</span>
             </div>
         </div>
@@ -217,7 +213,7 @@
                 </div>
             </div>
             <div class="mi-text">
-                <h5>Emma Sandoval</h5>
+                <h5>Sandoval</h5>
                 <span>Speaker</span>
             </div>
         </div>
@@ -231,7 +227,7 @@
                 </div>
             </div>
             <div class="mi-text">
-                <h5>Emma Sandoval</h5>
+                <h5>Emma </h5>
                 <span>Speaker</span>
             </div>
         </div>
@@ -245,7 +241,7 @@
                 </div>
             </div>
             <div class="mi-text">
-                <h5>Emma Sandoval</h5>
+                <h5>Sandoval</h5>
                 <span>Speaker</span>
             </div>
         </div>
@@ -259,7 +255,7 @@
                 </div>
             </div>
             <div class="mi-text">
-                <h5>Emma Sandoval</h5>
+                <h5>Emma </h5>
                 <span>Speaker</span>
             </div>
         </div>
@@ -273,7 +269,7 @@
                 </div>
             </div>
             <div class="mi-text">
-                <h5>Emma Sandoval</h5>
+                <h5>Sandoval</h5>
                 <span>Speaker</span>
             </div>
         </div>
@@ -775,7 +771,7 @@
                                             <div class="col-lg-4">
                                                 <ul class="sc-widget">
                                                     <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
-                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    <li><i class="fa fa-map-marker"></i> UON, Nairobi
                                                     </li>
                                                 </ul>
                                             </div>
@@ -803,7 +799,7 @@
                                             <div class="col-lg-4">
                                                 <ul class="sc-widget">
                                                     <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
-                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    <li><i class="fa fa-map-marker"></i> Westlands, Nairobi
                                                     </li>
                                                 </ul>
                                             </div>
@@ -824,8 +820,8 @@
                                                 <div class="sc-text">
                                                     <h4>Dealing with Too Difficult People</h4>
                                                     <ul>
-                                                        <li><i class="fa fa-user"></i> John Smith</li>
-                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        <li><i class="fa fa-user"></i> Sasha Smith</li>
+                                                        <li><i class="fa fa-envelope"></i> sasha@gmail.com
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -833,7 +829,7 @@
                                             <div class="col-lg-4">
                                                 <ul class="sc-widget">
                                                     <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
-                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    <li><i class="fa fa-map-marker"></i> Westlands, Nairobi
                                                     </li>
                                                 </ul>
                                             </div>
@@ -852,8 +848,8 @@
                                                 <div class="sc-text">
                                                     <h4>V7 Digital Photo Printing</h4>
                                                     <ul>
-                                                        <li><i class="fa fa-user"></i> John Smith</li>
-                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        <li><i class="fa fa-user"></i> James Brown</li>
+                                                        <li><i class="fa fa-envelope"></i> james@gmail.com
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -861,7 +857,7 @@
                                             <div class="col-lg-4">
                                                 <ul class="sc-widget">
                                                     <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
-                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    <li><i class="fa fa-map-marker"></i> CBD, Nairobi
                                                     </li>
                                                 </ul>
                                             </div>
@@ -880,8 +876,8 @@
                                                 <div class="sc-text">
                                                     <h4>Beyond The Naked Eye</h4>
                                                     <ul>
-                                                        <li><i class="fa fa-user"></i> John Smith</li>
-                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        <li><i class="fa fa-user"></i> Mary Martha</li>
+                                                        <li><i class="fa fa-envelope"></i> martha.m@gmail.com
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -889,7 +885,7 @@
                                             <div class="col-lg-4">
                                                 <ul class="sc-widget">
                                                     <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
-                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    <li><i class="fa fa-map-marker"></i> Strathmore Univerisity, Nairobi
                                                     </li>
                                                 </ul>
                                             </div>
@@ -909,7 +905,7 @@
                                                     <h4>Influencing The Influencer</h4>
                                                     <ul>
                                                         <li><i class="fa fa-user"></i> John Smith</li>
-                                                        <li><i class="fa fa-envelope"></i> john@Colorlib.com
+                                                        <li><i class="fa fa-envelope"></i> john@gmail.com
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -917,7 +913,7 @@
                                             <div class="col-lg-4">
                                                 <ul class="sc-widget">
                                                     <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
-                                                    <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
+                                                    <li><i class="fa fa-map-marker"></i> Karen, Nairobi
                                                     </li>
                                                 </ul>
                                             </div>
@@ -1074,16 +1070,16 @@
                     <div class="cs-text">
                         <div class="ct-address">
                             <span>Address:</span>
-                            <p>01 Pascale Springs Apt. 339, NY City <br />United State</p>
+                            <p>Parklands , Nairobi <br />Kenya</p>
                         </div>
                         <ul>
                             <li>
                                 <span>Phone:</span>
-                                (+12)-345-67-8910
+                                (+254)-745-67-8910
                             </li>
                             <li>
                                 <span>Email:</span>
-                                info.colorlib@gmail.com
+                                info.tamasha@gmail.com
                             </li>
                         </ul>
                         <div class="ct-links">
@@ -1092,13 +1088,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="cs-map">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52901.38789495531!2d-118.19465514866786!3d34.03523211493029!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2cf71ad83ff9f%3A0x518b28657f4543b7!2sEast%20Los%20Angeles%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1579763856144!5m2!1sen!2sbd"
-                            height="400" style="border:0;" allowfullscreen=""></iframe>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </section>
@@ -1144,7 +1134,7 @@
                    
                         <ul>
                             <li><a href="#">Home</a></li>
-                            <li><a href="#">Speakers</a></li>
+                            <li><a href="#">Events</a></li>
                             <li><a href="#">Schedule</a></li>
                             <li><a href="#">Blog</a></li>
                             <li><a href="#">Contact</a></li>

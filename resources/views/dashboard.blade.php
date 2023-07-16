@@ -97,7 +97,8 @@
                <p class="event-time">{{ $event->start_time }}</p>
                <p class="event-price">{{ $event->price }}</p>
                <p class="event-venue">{{ $event->venue }}</p>
-               <a href="{{'purchaseTickets'}}" class="buy-ticket-link">Buy Ticket</a>
+               
+               <a href="{{('ticket-cart'), $event->id}}" class="buy-ticket-link">Buy Ticket</a>
             </div>
          @endforeach
       </div>
@@ -105,7 +106,9 @@
 </body>
 </html>
 
-</x-app-layout>
+
+   </x-app-layout>
+
 
 
    

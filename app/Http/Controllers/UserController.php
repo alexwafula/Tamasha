@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -52,4 +53,26 @@ class UserController extends Controller
 
         return redirect()->route('Admin.users.index')->with('success', 'User details updated successfully.');
     }
+
+
+    public function addItem(Request $request)
+{
+    $event = Event::find($request->event_id);
+    $quantity = $request->quantity;
+    $totalPrice = $event->price * $quantity;
+
+    // Create a new cart item with the event details and quantity
+    $cartItem = new CartItem([
+        'event_id' => $event->id,
+        'quantity' => $quantity,
+        'total_price' => $totalPrice,
+    ]);
+
+    // Add the cart item to the user's cart
+    auth()->user()->cartItems()->save($cartItem);
+
+    // Redirect the user to the cart page
+    return redirect()->route('cart.show')->with('success', 'Event added to cart.');
+}
+
 }

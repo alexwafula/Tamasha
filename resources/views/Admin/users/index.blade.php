@@ -125,6 +125,7 @@
                         <div class="table-responsive rounded">
                             <table class="table table-bordered">
                                 <thead>
+                                <a class="btn btn-primary" href="{{'pdfview'}}">Export to PDF</a>
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>

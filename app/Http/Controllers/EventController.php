@@ -62,16 +62,7 @@ class EventController extends Controller
     {
         $event = Event::findOrFail($id);
 
-        return view('admin.events.edit', compact('event'));
-    }
-
-    
-
-    public function tickets()
-    {
-        $events = Event::all(); // Fetch events from the database
-
-        return view('tickets', compact('events'));
+        return view('admin.events.edit', compact('events'));
     }
 
 
@@ -99,6 +90,28 @@ class EventController extends Controller
         $event->update($validatedData);
 
         return redirect()->route('Admin.events.index')->with('success', 'Event updated successfully.');
+    }
+
+    //public function check(Request $request, Event $event)
+    //{
+       // $quantity = $request->input('quantity');
+       // $totalPrice = $event->price * $quantity;
+
+        // Process payment logic goes here...
+
+        // Generate PDF receipt
+       // $pdf = PDF::loadView('events.receipt', compact('event', 'quantity', 'totalPrice'));
+
+        // Optional: Save the receipt to a storage location
+        //$pdf->save(storage_path('app/public/receipts/receipt.pdf'));
+
+        // Return the PDF as a response for download
+       // return $pdf->download('receipt.pdf');
+ //   }
+
+    public function showTicketCart(Event $event)
+    {
+    return view('ticket-cart', compact('events'));
     }
 
     public function destroy($id)

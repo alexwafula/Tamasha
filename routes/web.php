@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\TicketController; 
 
+use App\Http\Controllers\CheckController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +19,23 @@ use App\Http\Controllers\TicketController;
 |
 */
 
+
+
+Route::get('/ticket-cart/{event}', 'EventController@showTicketCart')->name('ticket-cart');
+Route::post('/cart/add', 'CartController@addItem')->name('cart.add');
+
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', [EventController::class, 'dashboard'])->name('dashboard');
+
+
+//Route::get('/check', [CheckController::class, 'checkout'])->name('checkout');
+//Route::post('/check/{event}', [EventController::class, 'check'])->name('check');
 
 
 Route::get('/admin', function () {
@@ -38,7 +51,7 @@ Route::middleware('auth')->group(function () {
     
 });
 
-
+ 
 
 Route::middleware('auth')->group(function () {
 
@@ -46,6 +59,9 @@ Route::get('/users',[UserController::class, 'index'])->name('Admin.users.index')
 Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('Admin.users.edit');
 Route::post('/users/{id}/update', [UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+Route::get('/ticket-cart/{event}', [EventController::class, 'showTicketCart'])->name('ticket-cart');
+Route::post('/cart/add', [CartController::class, 'addItem'])->name('cart.add');
 
 });
 /*
@@ -70,7 +86,7 @@ Route::prefix('Admin')->name('Admin.')->group(function () {
 });
 
 
-Route::post('/purchase-tickets', [TicketController::class, 'purchaseTickets'])->name('purchase.tickets');
+
 
 require __DIR__.'/auth.php';
 
